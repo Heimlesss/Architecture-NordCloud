@@ -8,4 +8,4 @@
 
 ## Pourquoi choisir OVH ?
  
-Choisir OVH comme fournisseur de cloud est une solution adaptée aux besoins car il est déjà certifié SecNumCloud, c'est un acteur français du Cloud qui sépare ses datacenter afin que les règlementations du RGPD soit respectées. :) 
+Choisir OVH comme fournisseur de cloud est une solution adaptée aux besoins car il est déjà certifié SecNumCloud, c'est un acteur français du Cloud qui sépare ses datacenter afin que les règlementations du RGPD soit respectées. :wink:
