@@ -1,3 +1,5 @@
+# IPs utiles pour se connecter (SSH en cascade, cf. ARCHITECTURE.md) et pour
+# vérifier l'état des instances sans accès au Manager OVH.
 output "front_public_ip" {
   description = "IP publique du tier présentation (seul point d'entrée prévu)"
   value       = openstack_compute_instance_v2.front.access_ip_v4

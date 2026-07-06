@@ -1,3 +1,7 @@
+# Toutes les valeurs concrètes (my_ip, clé SSH, project ID...) vivent dans
+# terraform.tfvars, non versionné (cf. .gitignore) : ce fichier ne définit
+# que le contrat (nom, type, description, valeur par défaut si sans risque).
+
 # ─── Projet OVHcloud ──────────────────────────────────────────────────────────
 variable "ovh_project_id" {
   description = "OVHcloud Public Cloud project ID"
