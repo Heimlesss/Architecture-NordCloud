@@ -172,16 +172,20 @@ resource "openstack_compute_volume_attach_v2" "db_data" {
 # déploiement, on scope une identité IAM aux seules actions nécessaires
 # (lecture/création/liste) sur le Compute, le Network et le Volume de CE
 # projet Public Cloud uniquement.
+# Tant que iam_deployer_urn n'est pas fourni (défaut ""), ce volet est
+# entièrement ignoré (count = 0) : utile pour tester le plan sur le reste de
+# l'architecture avant d'avoir l'identité IAM à qui accorder la policy.
 data "ovh_iam_reference_actions" "cloud_project" {
-  type = "cloudProject"
+  count = var.iam_deployer_urn == "" ? 0 : 1
+  type  = "cloudProject"
 }
 
 locals {
   # Filtre les actions du catalogue cloudProject à celles réellement requises
   # par ce déploiement (instances, réseau, volumes), en lecture/écriture de
   # base uniquement (pas de delete/update en dehors de Terraform lui-même).
-  deployer_allowed_actions = [
-    for a in data.ovh_iam_reference_actions.cloud_project.actions :
+  deployer_allowed_actions = var.iam_deployer_urn == "" ? [] : [
+    for a in data.ovh_iam_reference_actions.cloud_project[0].actions :
     a.action if(
       can(regex("(?i)(instance|network|volume)", a.action)) &&
       can(regex("(?i)(get|list|create)", a.action))
@@ -190,6 +194,7 @@ locals {
 }
 
 resource "ovh_iam_policy" "nordcloud_deployer" {
+  count       = var.iam_deployer_urn == "" ? 0 : 1
   name        = "nordcloud-deployer-${var.author}"
   description = "Accès limité aux ressources Compute/Network/Volume du projet ${var.ovh_project_id}"
 

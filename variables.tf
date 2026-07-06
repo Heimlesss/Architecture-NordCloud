@@ -78,6 +78,7 @@ variable "db_volume_type" {
 
 # ─── IAM à privilège minimal ────────────────────────────────────────────────────
 variable "iam_deployer_urn" {
-  description = "URN de l'identité IAM OVH (compte, groupe ou clé API) à qui accorder la policy de déploiement à privilège minimal"
+  description = "URN de l'identité IAM OVH (compte, groupe ou clé API) à qui accorder la policy de déploiement à privilège minimal. Laisser vide pour tester le plan sans ce volet (la policy ne sera alors pas créée)."
   type        = string
+  default     = ""
 }
