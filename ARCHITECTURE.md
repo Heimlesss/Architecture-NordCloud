@@ -8,23 +8,23 @@
                      80/443 │ 22 (my_ip uniquement)
                             ▼
                   ┌───────────────────┐
-                  │  TIER PRÉSENTATION │  sg-presentation
-                  │   front-<author>   │
+                  │  TIER PRÉSENTATION│  sg-presentation
+                  │   front-<author>  │
                   └─────────┬─────────┘
                             │ app_port (8080) + 22
                             │  (uniquement depuis sg-presentation)
                             ▼
                   ┌───────────────────┐
-                  │  TIER APPLICATION  │  sg-application
-                  │  app-<author>-N    │
+                  │  TIER APPLICATION │  sg-application
+                  │  app-<author>-N   │
                   └─────────┬─────────┘
                             │ db_port (5432) + 22
                             │  (uniquement depuis sg-application)
                             ▼
                   ┌───────────────────┐
-                  │   TIER DONNÉES     │  sg-database
-                  │    db-<author>     │
-                  │  + volume chiffré  │
+                  │   TIER DONNÉES    │  sg-database
+                  │    db-<author>    │
+                  │  + volume chiffré │
                   └───────────────────┘
 ```
 
