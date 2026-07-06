@@ -4,16 +4,16 @@
  
 L’architecture utilise des Security Groups séparés pour chaque tier :
  
-- SG Frontend :
+- SG Présentation :
   - Autorise HTTP/HTTPS depuis Internet.
   - N’autorise pas l’accès direct à la base de données.
  
-- SG Métier :
-  - Autorise uniquement le trafic venant du SG Frontend.
+- SG Application :
+  - Autorise uniquement le trafic venant du SG Présentation.
   - Communique avec le tier données sur le port de la base.
  
-- SG Data :
-  - Autorise uniquement le trafic venant du SG Métier.
+- SG Database :
+  - Autorise uniquement le trafic venant du SG Application.
   - Refuse tout accès direct depuis Internet.
  
 ## IAM
